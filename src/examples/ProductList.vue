@@ -34,19 +34,20 @@
 
 
 <template>
-    <h2>Lista de productos:</h2>
-    <ul> 
-        <ProductCard 
-        v-for="p in products" 
-        :product="p" 
-        @productAddedToCart="addProduct(p.id)"/>   
-    </ul>
-    <h2>Carrito de compras:</h2>
-    <ul>
-        <Cart :details=details></Cart>
-    </ul>
+<v-container>
+    <v-row>
+        <v-col v-for="p in products" cols="4">
+            <ProductCard      
+            :product="p" 
+            @productAddedToCart="addProduct(p.id)"/>
+        </v-col>
+    </v-row>
 
-
+    
+    <Cart :details=details></Cart>
+ 
+    
+</v-container>
 
 </template>
 
