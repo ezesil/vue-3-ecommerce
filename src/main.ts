@@ -3,7 +3,6 @@
 import { createApp } from 'vue'
 //import { createPinia } from 'pinia'
 
-import ProductList from './examples/ProductList.vue'
 import App from './App.vue'
 
 // Vue router
