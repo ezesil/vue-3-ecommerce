@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import ProductCard from "./ProductCard.vue"
     import Cart from "./Cart.vue"
-    import type {CartDetails, Product} from "./Product"
+    import type {CartDetails, Product} from "../models/Product.ts"
     import  { ref } from "vue";
 
     const products:Product[] = [
@@ -34,7 +34,6 @@
 
 
 <template>
-<v-container>
     <v-row>
         <v-col v-for="p in products" cols="4">
             <ProductCard      
@@ -42,13 +41,8 @@
             @productAddedToCart="addProduct(p.id)"/>
         </v-col>
     </v-row>
-
-    
+  
     <Cart :details=details></Cart>
- 
-    
-</v-container>
-
 </template>
 
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Product } from './Product'
+import type { Product } from '../models/Product.ts'
 import type { PropType } from 'vue'
 
 

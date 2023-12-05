@@ -6,9 +6,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/cart">Cart</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        
       </nav>
     </div>
   </header>
@@ -21,16 +19,15 @@ import { RouterLink, RouterView } from 'vue-router'
           size="32"
         ></v-avatar>
 
-        <v-btn variant="text" text="Home"
-          
-        ></v-btn>
-        <v-btn variant="text" text="Cart"
-          
-        ></v-btn>
-        <v-btn variant="text" text="About"
-          
-        ></v-btn>
-
+        <RouterLink to="/" v-slot="{navigate}">
+          <v-btn text="Home" @click="navigate"></v-btn>
+        </RouterLink>
+        <RouterLink to="/cart" v-slot="{navigate}">
+          <v-btn text="Cart" @click="navigate"></v-btn>
+        </RouterLink>
+        <RouterLink to="/about" v-slot="{navigate}">
+          <v-btn text="About" @click="navigate"></v-btn>
+        </RouterLink>
 
         <v-spacer></v-spacer>
 
@@ -48,8 +45,10 @@ import { RouterLink, RouterView } from 'vue-router'
       </v-container>
     </v-app-bar>
 
-    <v-main class="bg-grey-lighten-1">
-      <RouterView/>
+    <v-main class="bg-black-lighten-1">
+      <v-container>
+        <RouterView/>
+      </v-container>
     </v-main>
   </v-app>
 </template>

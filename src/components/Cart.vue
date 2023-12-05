@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import type { CartDetails } from './Product';
+import type { CartDetails } from '../models/Product.ts';
 import type { PropType } from 'vue';
 
     defineProps({ 
