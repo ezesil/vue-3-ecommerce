@@ -1,16 +1,13 @@
-<script setup lang="ts">
+<script lang="ts">
+import { useCartStore } from '../stores/CartDetailsStore';
 
-import type { CartDetails } from '../models/Product.ts';
-import type { PropType } from 'vue';
-
-    defineProps({ 
-        details: {
-            type: Object as PropType<Array<CartDetails | undefined>>,
-            required: true
-        },
-    })
-
-
+export default {
+  computed:{
+    details() {
+        return useCartStore().details
+    }
+  }
+}
 </script>
 
 <template>

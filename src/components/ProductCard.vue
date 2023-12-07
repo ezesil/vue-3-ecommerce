@@ -1,20 +1,18 @@
-<script setup lang="ts">
-import type { Product } from '../models/Product.ts'
-import type { PropType } from 'vue'
+<script lang="ts">
+import type { Product } from '@/models/Product';
+import type { PropType } from 'vue';
 
-
-const props = defineProps({ 
-  product: {
-    type: Object as PropType<Product>,
-    required: true
+export default {
+  props:{
+    product: {
+      type: Object as PropType<Product>,
+      required: true
+    },
   },
-})
-
-defineEmits(["productAddedToCart"]);
+  emits:["productAddedToCart"]
+}
 
 </script>
-
- 
 <template>    
       <v-card>
 
@@ -25,13 +23,13 @@ defineEmits(["productAddedToCart"]);
         </v-img>
 
         <v-card-title>
-          {{ props.product.name }}
-        </v-card-title>
+          {{ product.name }}
+        </v-card-title> 
 
         <v-card-text>
           <p class="mb-2">Descripcion del producto</p>
           <v-chip>
-            ${{ props.product.price }}
+            ${{ product.price }}
           </v-chip>
         </v-card-text>
 
@@ -42,7 +40,7 @@ defineEmits(["productAddedToCart"]);
           </v-btn>
         </v-card-actions>
 
-        <!-- <button @click="$emit('productAddedToCart')">
+        <!-- <button @click="$emit('productAddedToCart')"> 
           Agregar al carrito
         </button> -->
         
