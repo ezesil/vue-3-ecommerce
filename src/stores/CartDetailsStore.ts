@@ -3,9 +3,13 @@ import { type CartDetails, type Product } from '../models/Product.ts'
 
 export const useCartStore = defineStore('cart', {
     state: () => ({ details: <Array<CartDetails>>[] }),
-    // getters: {
-    //   doubleCount: (state) => state.count * 2,
-    // },
+    getters: {
+      cartItemsCount: (state) => {
+        let count = 0;
+        state.details.forEach(d => count += d.count);
+        return count;
+      }
+    },
     actions: {
       addProduct(product: Product){
         const prod = this.details?.find(prod => prod.id == product.id)

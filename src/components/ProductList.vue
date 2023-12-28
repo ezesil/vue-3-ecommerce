@@ -28,8 +28,6 @@
             @productAddedToCart="addProduct(p)"/>
         </v-col>
     </v-row>
-  
-    <Cart></Cart>
 </template>
 
 
