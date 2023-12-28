@@ -22,5 +22,21 @@ export const useCartStore = defineStore('cart', {
                 this.details.push(detail)
             }      
         }
-    },
-}})
+      },
+      increment(id: number){
+        const prod = this.details?.find(prod => prod.id == id)
+        if(prod)
+          prod.count += 1;
+      },
+      decrement(id: number){
+        const prod = this.details?.find(prod => prod.id == id)
+        if(prod && prod.count > 1)
+          prod.count -= 1;
+        else{         
+          const index = this.details.findIndex(p => p.id === id);
+          this.details.splice(index, 1);
+        }
+      }
+    }
+  }
+)
