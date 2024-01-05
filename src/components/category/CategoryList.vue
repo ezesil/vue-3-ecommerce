@@ -7,8 +7,8 @@ export default {
         return {
             categories:
             [
-                { id: 1, name: 'Tecnología' },
-                { id: 2, name: 'Juguetes' }
+                { id: 1, name: 'Oficina', description: 'Productos de oficina.' },
+                { id: 2, name: 'Computadora', description: 'Accesorios para computadoras.' }
             ] as Category[]
         };
             
