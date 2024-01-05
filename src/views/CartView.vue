@@ -1,6 +1,6 @@
 <script lang="ts">
 import { useCartStore } from '@/stores/CartDetailsStore';
-import Cart from '../components/Cart.vue'
+import CartBox from '../components/CartBox.vue'
 
 export default {
   computed:{
@@ -8,13 +8,13 @@ export default {
         return useCartStore().details
     }
   },
-  components:{ Cart }
+  components:{ CartBox }
 
 } 
 </script>
 
 <template>
-    <Cart :details="details"/>
+    <CartBox :details="details"/>
 </template>
 
 

@@ -2,7 +2,6 @@
     import { useCartStore } from "@/stores/CartDetailsStore";
     import { useProductsStore } from "@/stores/ProductsStore";
     import ProductCard from "./ProductCard.vue";
-    import Cart from "./Cart.vue"
 
     export default {
         computed: {
@@ -13,7 +12,7 @@
                 return useProductsStore().getProducts;
             }
         },
-        components: { ProductCard, Cart }
+        components: { ProductCard }
     }
     
 </script>
@@ -22,7 +21,7 @@
 
 <template>
     <v-row>
-        <v-col v-for="p in getProducts()" cols="4">
+        <v-col v-for="p in getProducts()" :key="p.id" cols="4">
             <ProductCard     
             :product="p" 
             @productAddedToCart="addProduct(p)"/>

@@ -3,7 +3,7 @@ import { useCartStore } from '../stores/CartDetailsStore';
 import { RouterLink } from 'vue-router';
 
 export default {
-    methods:{
+    methods: {
         increment(id: number){
             this.cartStore.increment(id);
         },
@@ -21,7 +21,10 @@ export default {
         details() {
             return this.cartStore.details
         }
-  }
+    },
+    components:{
+        RouterLink
+    }
 }
 </script>
 
@@ -32,13 +35,29 @@ export default {
         </v-card-title>
         <v-card-text>
             <v-list v-if="details.length > 0">             
-                <v-list-item v-for="product in details" :value="product?.productId">
+                <v-list-item v-for="product in details" :key="product.id" :value="product?.id">
                     <v-list-item-title>
-                        Nombre: {{product?.name}}
-                        <v-btn @click="increment(product.id)">+</v-btn>
+                        {{product?.name}}
+
+                        <v-btn 
+                            class="ml-2"
+                            icon="mdi-plus"
+                            size="x-small" 
+                            @click="increment(product.id)"/>
+
                         ({{product?.count}})
-                        <v-btn v-if="product.count <= 1" @click="deleteProduct(product.id)" color="red">Eliminar</v-btn>
-                        <v-btn v-else @click="decrement(product.id)">-</v-btn>
+                        
+                        <v-btn 
+                            icon="mdi-minus"
+                            size="x-small" 
+                            @click="decrement(product.id)"/>
+
+                        <v-btn 
+                            icon="mdi-delete"
+                            size="x-small" 
+                            @click="deleteProduct(product.id)"/>
+
+
                     </v-list-item-title>
                 </v-list-item>
             </v-list>

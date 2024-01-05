@@ -1,20 +1,15 @@
 <script lang="ts">
-import { type Category } from '../models/Product.ts'
+import { type Category } from '../models/Product'
 
 
 export default {
     data(){
         return {
-            categories: <Array<Category>>[
-                {
-                    id: 1,
-                    name: "Tecnología"
-                },
-                {
-                    id: 2,
-                    name: "Juguetes"
-                }
-            ]
+            categories:
+            [
+                { id: 1, name: 'Tecnología' },
+                { id: 2, name: 'Juguetes' }
+            ] as Category[]
         };
             
     }
