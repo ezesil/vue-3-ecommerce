@@ -1,5 +1,5 @@
 <script lang="ts">
-import TopBar from './components/TopBar.vue'
+import TopBar from './components/shared/TopBar.vue'
 
 export default {
     components: {

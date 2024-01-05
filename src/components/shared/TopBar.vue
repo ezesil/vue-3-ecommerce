@@ -18,12 +18,14 @@ export default {
 <template>
     <v-app-bar flat>
         <v-container ma-0 pa-0 fill-height class="mx-auto d-flex align-center justify-center">
-            <v-avatar class="me-4" color="grey-darken-1" size="32" />
+            <v-avatar class="me-4" color="grey-darken-1" size="32">
+                <v-img aspect-ratio="stretched" src="/logo.jpg"></v-img>
+            </v-avatar>
 
             <RouterLink v-slot="{ navigate }" to="/">
-                <v-btn prepend-icon="mdi-home-variant" :active="$route.name === 'home'" color="white" @click="navigate"
-                >Home</v-btn
-                >
+                <v-btn prepend-icon="mdi-home-variant" :active="$route.name === 'home'" color="white" @click="navigate">
+                    Home
+                </v-btn>
             </RouterLink>
 
             <RouterLink v-slot="{ navigate }" to="/cart">

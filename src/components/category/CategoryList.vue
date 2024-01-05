@@ -1,5 +1,5 @@
 <script lang="ts">
-import { type Category } from '../models/Product'
+import { type Category } from '../../models/Category'
 
 
 export default {

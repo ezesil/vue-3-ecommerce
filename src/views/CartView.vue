@@ -1,20 +1,24 @@
 <script lang="ts">
-import { useCartStore } from '@/stores/CartDetailsStore';
-import CartBox from '../components/CartBox.vue'
+import CartBox from '../components/cart/CartBox.vue'
+import SummaryCard from '../components/cart/SummaryCard.vue'
 
 export default {
-  computed:{
-    details() {
-        return useCartStore().details
-    }
-  },
-  components:{ CartBox }
-
+  components:{ CartBox, SummaryCard }
 } 
 </script>
 
 <template>
-    <CartBox :details="details"/>
+  <v-row>
+      <v-col cols="8">
+        <CartBox />
+      </v-col>
+      <v-col cols="4">
+        <SummaryCard />
+      </v-col>
+
+  </v-row>
+
+
 </template>
 
 

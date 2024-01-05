@@ -9,6 +9,11 @@ export default {
       required: true
     },
   },
+  computed:{
+    productImageUrl(){
+      return this.product.image ?? "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg";
+    }
+  },
   emits:["productAddedToCart"]
 }
 
@@ -17,8 +22,8 @@ export default {
       <v-card>
 
         <v-img
-          src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-          height="200px"
+          :src="productImageUrl"
+          height="500px"
           cover>
         </v-img>
 
@@ -38,12 +43,7 @@ export default {
           <v-btn @click="$emit('productAddedToCart')" color='orange-lighten-2'>
             Agregar al carrito
           </v-btn>
-        </v-card-actions>
-
-        <!-- <button @click="$emit('productAddedToCart')"> 
-          Agregar al carrito
-        </button> -->
-        
+        </v-card-actions>        
       </v-card>
       
 </template> 

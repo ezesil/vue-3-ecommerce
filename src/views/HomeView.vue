@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import ProductList from '../components/ProductList.vue'
-  import CategoryList from '../components/CategoryList.vue'
+  import ProductList from '../components/product/ProductList.vue'
+  import CategoryList from '../components/category/CategoryList.vue'
 </script>
 
 <template>
