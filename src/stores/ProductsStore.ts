@@ -14,14 +14,23 @@ const productss = [
 ] as Product[]
 
 export const useProductsStore = defineStore('products', {
-  state: () => ({ products: productss as Product[] }),
+  state: () => ({
+     _products: productss as Product[],
+     categoryId: null as number | null
+    }),
+
+  getters:{
+    products(state) : Product[]{ 
+      if(!state.categoryId)
+        return state._products;
+
+      return state._products.filter(p => p.categoryId == this.categoryId);
+    }
+  },
 
   actions: {
-    getProducts(){
-      if(this.products == undefined || this.products.length == 0)
-          this.products = this.products.concat(productss)      
-      console.log(this.products)
-      return this.products;
-    }
+    selectCategory(categoryId: number){
+      this.categoryId = categoryId
+    }  
   },
 })

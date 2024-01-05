@@ -18,7 +18,7 @@ export default {
         <TopBar />
 
         <v-main class="bg-black-lighten-1">
-            <v-container>
+            <v-container style="min-width: 95%; width:95%; max-width=95%">
                 <RouterView />
             </v-container>
         </v-main>

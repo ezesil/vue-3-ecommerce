@@ -23,7 +23,7 @@ export default {
 
         <v-img
           :src="productImageUrl"
-          height="500px"
+          height="300px"
           cover>
         </v-img>
 

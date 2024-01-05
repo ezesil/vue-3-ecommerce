@@ -11,7 +11,7 @@ export default {
     computed:{
         ...mapState(useProductsStore, ['products'])
     },
-    components: { ProductCard }
+    components: { ProductCard }   
 }   
 </script>
 
@@ -19,7 +19,7 @@ export default {
 
 <template>
     <v-row>
-        <v-col v-for="p in products" :key="p.id" cols="4">
+        <v-col v-for="p in products" :key="p.id" cols="3">
             <ProductCard     
             :product="p" 
             @productAddedToCart="addProduct(p)"/>
