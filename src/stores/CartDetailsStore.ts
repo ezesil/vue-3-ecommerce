@@ -23,6 +23,10 @@ export const useCartStore = defineStore('cart', {
             }      
         }
       },
+      deleteProduct(id: number){
+        const index = this.details.findIndex(p => p.id === id);
+        this.details.splice(index, 1);
+      },
       increment(id: number){
         const prod = this.details?.find(prod => prod.id == id)
         if(prod)
@@ -32,10 +36,6 @@ export const useCartStore = defineStore('cart', {
         const prod = this.details?.find(prod => prod.id == id)
         if(prod && prod.count > 1)
           prod.count -= 1;
-        else{         
-          const index = this.details.findIndex(p => p.id === id);
-          this.details.splice(index, 1);
-        }
       }
     }
   }

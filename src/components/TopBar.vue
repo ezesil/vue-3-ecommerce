@@ -19,19 +19,20 @@ import { RouterLink } from "vue-router"
         <v-avatar
           class="me-4 "
           color="grey-darken-1"
-          size="32"
-        ></v-avatar>
+          size="32"/>
 
         <RouterLink to="/" v-slot="{navigate}">
-          <v-btn text="Home" @click="navigate"></v-btn>
+          <v-btn prepend-icon="mdi-home-variant" :active="$route.name === 'home'" color="white" @click="navigate">Home</v-btn>
         </RouterLink>
+
         <RouterLink to="/cart" v-slot="{navigate}">
           <v-badge :content="itemsCount" :model-value="itemsCount > 0" color="orange-lighten-2"> 
-            <v-btn text="Cart" @click="navigate"></v-btn>
+            <v-btn prepend-icon="mdi-cart" :active="$route.name === 'cart'" color="white" @click="navigate">Cart</v-btn>
           </v-badge>
         </RouterLink>
+
         <RouterLink to="/about" v-slot="{navigate}">
-          <v-btn text="About" @click="navigate"></v-btn>
+          <v-btn prepend-icon="mdi-information"  :active="$route.name === 'about'" color="white" @click="navigate">About</v-btn>
         </RouterLink>
 
         <v-spacer></v-spacer>
