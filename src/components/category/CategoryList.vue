@@ -28,7 +28,6 @@ export default {
                 name: 'home'
             })
         },
-        ...mapActions(useProductsStore, ['orderByName', 'orderByPrice'])
     },
     computed:{
         ...mapState(useProductsStore, ['order'])

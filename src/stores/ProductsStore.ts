@@ -24,7 +24,7 @@ export const useProductsStore = defineStore('products', {
   state: () => ({
       _products: productss as Product[],
       categoryId: null as Number | null,
-      order: null as String | null,
+      order: 'clear' as String | null,
       sorters: sorters as SorterDict
     }),
   getters:{
@@ -38,7 +38,7 @@ export const useProductsStore = defineStore('products', {
         products = state._products; 
       }   
 
-      if(state.order === null || state.order === ''){
+      if(state.order === 'clear'){
         return products;
       }
       else{
@@ -52,7 +52,7 @@ export const useProductsStore = defineStore('products', {
       this.categoryId = categoryId;
     },
     clearOrder(){
-      this.order = null;
+      this.order = 'clear';
     },
     sortBy(orderType: string){  
       if(this.sorters[orderType])    
