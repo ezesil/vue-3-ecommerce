@@ -1,6 +1,6 @@
 <script lang="ts">
   import ProductList from '../components/product/ProductList.vue'
-  import CategoryList from '../components/category/CategoryList.vue'
+  import LeftMenu from '../components/left/LeftMenu.vue'
   import { useProductsStore } from '../stores/ProductsStore';
 
   function updateCategoryFromRouteParams(categoryId: string | string[]){
@@ -10,12 +10,12 @@
   }
 
   export default {
-    components:{ ProductList, CategoryList },
+    components:{ ProductList, LeftMenu },
 
-    beforeRouteEnter(to, from){
+    beforeRouteEnter(to){
       updateCategoryFromRouteParams(to.params.categoryId)
     },
-    beforeRouteUpdate(to, from){
+    beforeRouteUpdate(to){
       updateCategoryFromRouteParams(to.params.categoryId)
     }
   }
@@ -25,7 +25,7 @@
 <template>
     <v-row>
       <v-col cols="2">
-        <CategoryList/>
+        <LeftMenu/>
       </v-col>
 
       <v-col cols="10">
