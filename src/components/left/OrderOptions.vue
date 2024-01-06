@@ -26,6 +26,7 @@ export default {
 <template>
 
 <v-list-subheader>Ordenar por precio</v-list-subheader>
+
     <v-list-item
     @click="sortBy(ProductPriceSorter.AscSortName)"
     :active="order === ProductPriceSorter.AscSortName"
@@ -48,18 +49,21 @@ export default {
     </v-list-item>
 
 <v-list-subheader>Ordenar por nombre</v-list-subheader>
+
     <v-list-item
     @click="sortBy(ProductNameSorter.AscSortName)"
     :active="order === ProductNameSorter.AscSortName"
     link
     title="De A a la Z">              
     </v-list-item>
+
     <v-list-item
     @click="sortBy(ProductNameSorter.DescSortName)"
     :active="order === ProductNameSorter.DescSortName"
     link
     title="De Z a la A">              
     </v-list-item>
+
     <v-list-item
     v-if="order === ProductNameSorter.AscSortName || order === ProductNameSorter.DescSortName"
     @click="clearOrder"

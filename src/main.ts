@@ -19,6 +19,8 @@ import * as directives from 'vuetify/directives'
 import "@mdi/font/css/materialdesignicons.css"
 import { aliases, fa } from 'vuetify/iconsets/fa'
 import { mdi } from 'vuetify/iconsets/mdi'
+import { GlobalVars } from './globals/globals';
+
 
 const vuetify = createVuetify({
   components,
@@ -36,11 +38,16 @@ const vuetify = createVuetify({
   }
 });
 
+
+
 const app = createApp(App)
+
+app.config.globalProperties.$GlobalVars = GlobalVars; // Registra la clase en el prototipo de Vue
 
 app.use(vuetify)
 
 app.use(createPinia())
+
 app.use(router)
 
 app.mount('#app')

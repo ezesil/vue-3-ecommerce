@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { type Product } from '../models/Product';
 import { ProductPriceSorter, ProductNameSorter, type SorterDict } from '@/models/OrderTypes';
 import { SorterConfigurator } from '../models/OrderTypes';
+import { GlobalVars } from '@/globals/globals';
 
 const productss = [
   { id: 1, name: "Silla", price: 56, categoryId: 2, image: "/products/silla1.webp"}, 
@@ -24,25 +25,49 @@ export const useProductsStore = defineStore('products', {
   state: () => ({
       _products: productss as Product[],
       categoryId: null as Number | null,
-      order: 'clear' as String | null,
+      order: null as String | null,
       sorters: sorters as SorterDict
     }),
   getters:{
     products(state) : Product[]{ 
       let products = null;
+      const orderType = String(state.order);
 
       if(state.categoryId) { 
-        products = state._products.filter(p => p.categoryId == this.categoryId); 
+        products = this._products.filter(p => p.categoryId === this.categoryId); 
+
+        if(GlobalVars.environmentType === "DEVELOPMENT"){
+          console.log("Filtro por categoria: " + state.categoryId)
+          console.log(products)
+        }
       }   
       else { 
-        products = state._products; 
+        products = this._products; 
+
+        if(GlobalVars.environmentType === "DEVELOPMENT"){
+          console.log("Sin filtro por categoria: " + state.categoryId)
+          console.log(products)
+        }
       }   
 
-      if(state.order === 'clear'){
+      if(this.sorters[orderType]){
+        products = state.sorters[orderType](products).result as Product[];
+
+        if(GlobalVars.environmentType === "DEVELOPMENT"){
+          console.log("Con ordenamiento: " + orderType)
+          console.log(products)
+        }
+
         return products;
       }
       else{
-        products = state.sorters[String(state.order)](products).result as Product[];
+
+        if(GlobalVars.environmentType === "DEVELOPMENT"){
+          console.log("Sin ordenamiento: " + orderType)
+          console.log(products)
+          console.log(this._products)
+        }
+
         return products;
       }
     }
@@ -52,7 +77,7 @@ export const useProductsStore = defineStore('products', {
       this.categoryId = categoryId;
     },
     clearOrder(){
-      this.order = 'clear';
+      this.order = null;
     },
     sortBy(orderType: string){  
       if(this.sorters[orderType])    

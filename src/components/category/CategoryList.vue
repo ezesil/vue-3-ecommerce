@@ -1,8 +1,6 @@
 <script lang="ts">
 import { type Category } from '../../models/Category'
 import router from '@/router';
-import { useProductsStore } from '../../stores/ProductsStore';
-import { mapActions, mapState } from 'pinia';
 import OrderOptions from '../left/OrderOptions.vue'
 
 export default {
@@ -29,9 +27,6 @@ export default {
             })
         },
     },
-    computed:{
-        ...mapState(useProductsStore, ['order'])
-    },
     components:{
         OrderOptions
     }
@@ -54,7 +49,6 @@ export default {
                 :key="category.id"
                 link
                 @click='goToCategory(category.id)'>
-
                     <v-list-item-title>
                         {{ category.name }}
                     </v-list-item-title>
