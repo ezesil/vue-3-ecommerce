@@ -1,6 +1,0 @@
-{
-    "categories": [
-        { "id": 1, "name": "Oficina", "description": "Productos de oficina." },
-        { "id": 2, "name": "Computadora", "description": "Accesorios para computadoras." }
-    ]
-}
