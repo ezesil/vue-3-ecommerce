@@ -44,8 +44,8 @@ export default {
     <v-list-item
     v-if="order === ProductPriceSorter.AscSortName || order === ProductPriceSorter.DescSortName"
     @click="clearOrder"
-    link
-    title="Quitar filtro">              
+    link>  
+    <v-list-item-title>Quitar filtro <v-icon inline icon="mdi-close-circle-outline" color="red"/> </v-list-item-title>             
     </v-list-item>
 
 <v-list-subheader>Ordenar por nombre</v-list-subheader>
@@ -67,8 +67,8 @@ export default {
     <v-list-item
     v-if="order === ProductNameSorter.AscSortName || order === ProductNameSorter.DescSortName"
     @click="clearOrder"
-    link
-    title="Quitar filtro">              
+    link>  
+    <v-list-item-title>Quitar filtro <v-icon inline icon="mdi-close-circle-outline" color="red"/> </v-list-item-title>                  
     </v-list-item>
 
 

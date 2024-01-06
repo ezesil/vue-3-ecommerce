@@ -30,45 +30,46 @@ export const useProductsStore = defineStore('products', {
     }),
   getters:{
     products(state) : Product[]{ 
-      let products = null;
+      let workedProducts = null;
       const orderType = String(state.order);
 
       if(state.categoryId) { 
-        products = this._products.filter(p => p.categoryId === this.categoryId); 
-
-        if(GlobalVars.environmentType === "DEVELOPMENT"){
+        if(GlobalVars.environmentType === "DEVELOPMENT")
+        {
           console.log("Filtro por categoria: " + state.categoryId)
-          console.log(products)
+          console.log(workedProducts)
         }
+        workedProducts = this._products.filter(p => p.categoryId === this.categoryId); 
       }   
       else { 
-        products = this._products; 
+        workedProducts = this._products.slice(); 
 
-        if(GlobalVars.environmentType === "DEVELOPMENT"){
+        if(GlobalVars.environmentType === "DEVELOPMENT")
+        {
           console.log("Sin filtro por categoria: " + state.categoryId)
-          console.log(products)
+          console.log(workedProducts)
         }
       }   
 
       if(this.sorters[orderType]){
-        products = state.sorters[orderType](products).result as Product[];
-
-        if(GlobalVars.environmentType === "DEVELOPMENT"){
+        
+        if(GlobalVars.environmentType === "DEVELOPMENT")
+        {
           console.log("Con ordenamiento: " + orderType)
-          console.log(products)
+          console.log(workedProducts)
         }
 
-        return products;
+        return state.sorters[orderType](workedProducts).result as Product[];
       }
       else{
 
         if(GlobalVars.environmentType === "DEVELOPMENT"){
           console.log("Sin ordenamiento: " + orderType)
-          console.log(products)
+          console.log(workedProducts)
           console.log(this._products)
         }
 
-        return products;
+        return workedProducts;
       }
     }
   },

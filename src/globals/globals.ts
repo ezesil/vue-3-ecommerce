@@ -1,5 +1,5 @@
 export class GlobalVars{
-    static environmentType: string = 'PRODUCTION'
+    static environmentType: string = 'DEVELOPMENT'
 }
 
 
