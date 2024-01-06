@@ -3,6 +3,7 @@ import { type Category } from '../../models/Category'
 import router from '@/router';
 import { useProductsStore } from '../../stores/ProductsStore';
 import { mapActions, mapState } from 'pinia';
+import OrderOptions from '../left/OrderOptions.vue'
 
 export default {
     data(){
@@ -31,6 +32,9 @@ export default {
     },
     computed:{
         ...mapState(useProductsStore, ['order'])
+    },
+    components:{
+        OrderOptions
     }
 }
 
@@ -57,19 +61,9 @@ export default {
                     </v-list-item-title>
               </v-list-item>
             <v-divider class="my-2"></v-divider>   
-            <v-list-subheader>Ordenar</v-list-subheader>
-            <v-list-item
-            @click="orderByPrice"
-            :active="order === 'price'"
-            link
-            title="Por precio">              
-            </v-list-item>
-            <v-list-item
-            :active="order === 'name'"
-            @click="orderByName"
-            link
-            title="Por nombre">              
-            </v-list-item>
+
+            <OrderOptions/>
+            
         </v-list>
     </v-sheet>
 </template>

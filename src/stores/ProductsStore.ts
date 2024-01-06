@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia'
-import { type Product } from '../models/Product'
+import { type Product } from '../models/Product';
+import { ProductPriceSorter, ProductNameSorter, type SorterDict } from '@/models/OrderTypes';
+import { SorterConfigurator } from '../models/OrderTypes';
 
 const productss = [
   { id: 1, name: "Silla", price: 56, categoryId: 2, image: "/products/silla1.webp"}, 
@@ -13,48 +15,48 @@ const productss = [
   { id: 9, name: "Mouse Gamer", price: 40, categoryId: 2, image:"/products/mousegamer1.webp"}
 ] as Product[]
 
+const sorters = SorterConfigurator.createSorterDict([
+  new ProductPriceSorter(),
+  new ProductNameSorter()
+])
+
 export const useProductsStore = defineStore('products', {
   state: () => ({
-     _products: productss as Product[],
-     categoryId: null as Number | null,
-     order: null as String | null
+      _products: productss as Product[],
+      categoryId: null as Number | null,
+      order: null as String | null,
+      sorters: sorters as SorterDict
     }),
-
   getters:{
     products(state) : Product[]{ 
       let products = null;
 
       if(state.categoryId) { 
         products = state._products.filter(p => p.categoryId == this.categoryId); 
-      }
-      
+      }   
       else { 
         products = state._products; 
-      }
-      
-      if(state.order == null || state.order == '') {
+      }   
+
+      if(state.order === null || state.order === ''){
         return products;
       }
-
-      if(state.order == 'price'){
-        return products.sort((a, b) => a.price - b.price)
-      }
-
-      if(state.order == 'name'){
-        return products.sort((a, b) => a.name.localeCompare(b.name))
+      else{
+        products = state.sorters[String(state.order)](products).result as Product[];
+        return products;
       }
     }
   },
-
   actions: {
     selectCategory(categoryId: number){
-      this.categoryId = categoryId
+      this.categoryId = categoryId;
     },
-    orderByName(){
-      this.order = "name"
-    }  ,
-    orderByPrice(){
-      this.order = "price"
-    }   
+    clearOrder(){
+      this.order = null;
+    },
+    sortBy(orderType: string){  
+      if(this.sorters[orderType])    
+        this.order = orderType;
+    }, 
   },
 })
