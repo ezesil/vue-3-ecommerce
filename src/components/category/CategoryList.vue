@@ -2,7 +2,7 @@
 import { type Category } from '../../models/Category'
 import router from '@/router';
 import { useProductsStore } from '../../stores/ProductsStore';
-import { mapActions } from 'pinia';
+import { mapActions, mapState } from 'pinia';
 
 export default {
     data(){
@@ -28,6 +28,9 @@ export default {
             })
         },
         ...mapActions(useProductsStore, ['orderByName', 'orderByPrice'])
+    },
+    computed:{
+        ...mapState(useProductsStore, ['order'])
     }
 }
 
@@ -57,10 +60,12 @@ export default {
             <v-list-subheader>Ordenar</v-list-subheader>
             <v-list-item
             @click="orderByPrice"
+            :active="order === 'price'"
             link
             title="Por precio">              
             </v-list-item>
             <v-list-item
+            :active="order === 'name'"
             @click="orderByName"
             link
             title="Por nombre">              
