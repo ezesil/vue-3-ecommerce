@@ -9,7 +9,7 @@ export default {
         ...mapActions(useCartStore, ['addProduct']),
     },
     computed:{
-        ...mapState(useProductsStore, ['products'])
+        ...mapState(useProductsStore, ['products', 'loading'])
     },
     components: { ProductCard }   
 }   
@@ -18,7 +18,11 @@ export default {
 
 
 <template>
-    <v-row>
+    <div class="d-flex justify-center align-center h-100" v-if="loading == true">      
+        <v-progress-circular indeterminate :size="90" />
+    </div>
+
+    <v-row v-else>
         <v-col v-for="p in products" :key="p.id" cols="3">
             <ProductCard     
             :product="p" 

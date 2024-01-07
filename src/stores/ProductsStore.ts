@@ -3,8 +3,6 @@ import { type Product } from '../models/Product';
 import { ProductPriceSorter, ProductNameSorter, type SorterDict } from '@/models/OrderTypes';
 import { SorterConfigurator } from '../models/OrderTypes';
 import { GlobalVars } from '@/globals/globals';
-import productsData from '../data/products.json'
-
 
 const sorters = SorterConfigurator.createSorterDict([
   new ProductPriceSorter(),
@@ -13,7 +11,8 @@ const sorters = SorterConfigurator.createSorterDict([
 
 export const useProductsStore = defineStore('products', {
   state: () => ({
-      _products: productsData as Product[],
+      _products: [] as Product[],
+      loading: true as Boolean | undefined,
       categoryId: null as Number | null,
       order: null as String | null,
       sorters: sorters as SorterDict
@@ -64,6 +63,16 @@ export const useProductsStore = defineStore('products', {
     }
   },
   actions: {
+    fetchProducts(){
+      this.loading = true;
+
+      fetch('/data/products.json')
+      .then(response => response.json())
+      .then((data) => { 
+        this._products = data as Product[];
+        this.loading = false;
+       })
+    },
     selectCategory(categoryId: number){
       this.categoryId = categoryId;
     },
