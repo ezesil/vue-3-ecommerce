@@ -1,5 +1,6 @@
 export class GlobalVars{
-    static environmentType: string = 'DEVELOPMENT'
+    static environmentType: String = 'DEVELOPMENT';
+    static whatsappNumber: Number = 0
 }
 
 

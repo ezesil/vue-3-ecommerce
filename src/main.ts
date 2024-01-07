@@ -38,8 +38,6 @@ const vuetify = createVuetify({
   }
 });
 
-
-
 const app = createApp(App)
 
 app.config.globalProperties.$GlobalVars = GlobalVars; // Registra la clase en el prototipo de Vue

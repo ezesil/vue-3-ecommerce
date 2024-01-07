@@ -4,7 +4,7 @@ import { useCartStore } from '../../stores/CartDetailsStore';
 
 export default{
     computed:{
-        ...mapState(useCartStore, ['totalAmount'])
+        ...mapState(useCartStore, ['totalAmount', 'whatsAppLink'])
     }
 }
 
@@ -21,7 +21,7 @@ export default{
             </p>
         </v-card-subtitle>
         <v-card-text>
-            <v-btn variant="tonal" color='orange-lighten-2'>
+            <v-btn :href="whatsAppLink" variant="tonal" color='orange-lighten-2'>
                 Realizar pedido
             </v-btn>
         </v-card-text>

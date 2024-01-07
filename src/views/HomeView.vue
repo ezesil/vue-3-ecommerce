@@ -20,16 +20,11 @@ import { useCategoriesStore } from '@/stores/CategoriesStore';
       updateCategoryFromRouteParams(to.params.categoryId)
     },
     mounted(){
-
-      setTimeout(() => {
         const productsStore = useProductsStore();
-      productsStore.fetchProducts();
-      }, 4000)
+        productsStore.fetchProducts();
 
-      setTimeout(() => {
         const categoriesStore = useCategoriesStore();
-      categoriesStore.fetchCategories();
-      }, 2000)   
+        categoriesStore.fetchCategories();  
     }
   }
 
