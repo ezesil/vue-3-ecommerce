@@ -28,29 +28,27 @@ export default {
             </v-avatar>
 
             <RouterLink v-slot="{ navigate }" to="/">
-                <v-btn prepend-icon="mdi-home-variant" :active="$route.name === 'home' || $route.name === 'categories'" color="white" @click="navigate">
-                    Home
+                <v-btn :active="$route.name === 'home' || $route.name === 'categories'" color="white" @click="navigate">
+                    <v-icon icon="mdi-home-variant" color="white"></v-icon>
+                    <span class="d-none d-sm-flex">Home</span>
                 </v-btn>
             </RouterLink>
 
             <RouterLink v-slot="{ navigate }" to="/cart">
                 <v-btn :active="$route.name === 'cart'" color="white" @click="navigate">
-                    <template #prepend>
-                        <v-badge :content="itemsCount" :model-value="itemsCount > 0" color="orange-lighten-2">
-                            <v-icon icon="mdi-cart" color="white"></v-icon>
-                        </v-badge>
-                    </template>
-                    Cart
+                    <v-icon icon="mdi-cart" color="white"></v-icon>
+                    <span class="d-none d-sm-flex m-3">Cart</span>
+                    <v-badge class="mb-9" :content="itemsCount" :model-value="itemsCount > 0" color="orange-lighten-2">
+                    </v-badge>
                 </v-btn>
-            </RouterLink>
+                </RouterLink>
 
             <RouterLink v-slot="{ navigate }" to="/about">
-                <v-btn prepend-icon="mdi-information" :active="$route.name === 'about'" color="white" @click="navigate">
-                    About
+                <v-btn :active="$route.name === 'about'" color="white" @click="navigate">
+                    <v-icon icon="mdi-information" color="white"></v-icon>
+                    <span class="d-none d-sm-flex">About</span>
                 </v-btn>
             </RouterLink>
-
-
 
                 <v-spacer></v-spacer>
 
